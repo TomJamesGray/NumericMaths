@@ -119,7 +119,7 @@ public class ShuntingYard {
         return(outputQueue);
     }
 
-    public double evalRpn(String[] line){
+    public double evalRpn(String[] line, Map<String,Double> vars){
         Deque<Double> evalStack = new ArrayDeque<>();
         for (String token : line){
             if (isFunc(token)){
@@ -134,7 +134,12 @@ public class ShuntingYard {
                 evalStack.push(val);
             }
             else{
-                evalStack.push(Double.parseDouble(token));
+                if (vars.containsKey(token)){
+                    evalStack.push(vars.get(token));
+                }
+                else {
+                    evalStack.push(Double.parseDouble(token));
+                }
             }
         }
         return evalStack.pop();

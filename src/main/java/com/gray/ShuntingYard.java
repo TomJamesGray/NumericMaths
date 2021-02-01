@@ -134,8 +134,11 @@ public class ShuntingYard {
                 evalStack.push(val);
             }
             else{
-                if (vars.containsKey(token)){
-                    evalStack.push(vars.get(token));
+                if (vars != null){
+                    if (vars.containsKey(token)) {
+                        System.out.println("Vars contains this key! value is " + vars.get(token));
+                        evalStack.push(vars.get(token));
+                    }
                 }
                 else {
                     evalStack.push(Double.parseDouble(token));

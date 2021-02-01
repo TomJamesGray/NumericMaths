@@ -1,8 +1,10 @@
 package com.gray;
 
 import java.util.Collections;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.logging.Logger;
 
@@ -20,6 +22,7 @@ public class App {
             System.out.println(parser.toRpn(expr));
             Queue<String> x = parser.toRpn(expr);
             String[] rpnLine = new String[x.size()];
+            rpnLine = x.toArray(rpnLine);
 
             if (func.equals("eval")){
                 System.out.println(parser.evalRpn(x.toArray(rpnLine),null));
@@ -27,10 +30,7 @@ public class App {
             else if (func.equals("bisect")){
                 Double lowerBnd = Double.parseDouble(getInput("Enter lower bound: "));
                 Double upperBnd = Double.parseDouble(getInput("Enter upper bound: "));
-                Function<Double,Double> funcToBisect = (Double x_val) -> parser.evalRpn(rpnLine,Collections.singletonMap("x",x_val));
-                System.out.println(funcToBisect.apply(10.0));
-                RootFinding.bisect(lowerBnd,upperBnd,
-                        (Double x_val) -> parser.evalRpn(rpnLine, Collections.singletonMap("x",x_val)));
+                RootFinding.bisect(lowerBnd, upperBnd,rpnLine);
             }
 
 

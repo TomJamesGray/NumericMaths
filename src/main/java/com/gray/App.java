@@ -1,11 +1,7 @@
 package com.gray;
 
-import java.util.Collections;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.concurrent.Callable;
-import java.util.function.Function;
 import java.util.logging.Logger;
 
 public class App {
@@ -30,7 +26,8 @@ public class App {
             else if (func.equals("bisect")){
                 Double lowerBnd = Double.parseDouble(getInput("Enter lower bound: "));
                 Double upperBnd = Double.parseDouble(getInput("Enter upper bound: "));
-                RootFinding.bisect(lowerBnd, upperBnd,rpnLine);
+                Double approxRoot = RootFinding.bisect(lowerBnd, upperBnd,rpnLine);
+                System.out.println("Approximate root is " + approxRoot);
             }
 
 

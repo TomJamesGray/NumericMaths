@@ -37,7 +37,6 @@ public class ShuntingYard {
         operators.put("cos",cos);
         operators.put("(",lBracket);
         operators.put(")",rBracket);
-        System.out.println(addition.regexName);
         this.operators = operators;
 
         //Generate regex expression
@@ -49,7 +48,7 @@ public class ShuntingYard {
             regexExprBuilder.append("((?<=" + func.regexName + ")|(?=" + func.regexName + "))");
         }
         this.regexTokenizerExpr = regexExprBuilder.toString();
-        LOGGER.info("Regex splitting expression " + this.regexTokenizerExpr);
+//        LOGGER.info("Regex splitting expression " + this.regexTokenizerExpr);
     }
 
     public Queue<String> toRpn(String expr){
@@ -136,8 +135,11 @@ public class ShuntingYard {
             else{
                 if (vars != null){
                     if (vars.containsKey(token)) {
-                        System.out.println("Vars contains this key! value is " + vars.get(token));
+//                        System.out.println("Vars contains this key! value is " + vars.get(token));
                         evalStack.push(vars.get(token));
+                    }
+                    else{
+                        evalStack.push(Double.parseDouble(token));
                     }
                 }
                 else {

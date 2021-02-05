@@ -15,15 +15,22 @@
         <menus>
             <Menu text="Functions">
                 <items>
-                    <MenuItem text="Equation Solving"></MenuItem>
-                    <MenuItem text="Calculations"></MenuItem>
+                    <MenuItem text="Equation Solving"  onAction="#loadEquationSolving"></MenuItem>
+                    <MenuItem text="Calculations" onAction="#loadCalculations"></MenuItem>
                 </items>
             </Menu>
         </menus>
     </MenuBar>
     <VBox fx:id="mainWindow">
-        <Label fx:id="mainTitle" text="Hello world!"/>
-        <Label fx:id="subTitle" text="This is a simple demo application."/>
-        <Button fx:id="mainButton" text="Click me!"/>
+        <VBox fx:id="welcomeWindow">
+            <Label styleClass="title" text="NumericMaths"/>
+            <Label fx:id="subTitle" text="Lorem Ipsum Dolor Sit Amet"/>
+        </VBox>
+        <VBox fx:id="eqSolvingWindow" styleClass="windowPane" visible="false">
+            <Label styleClass="title">Equation Solving</Label>
+        </VBox>
+        <VBox fx:id="calculationsWindow" styleClass="windowPane" visible="false">
+            <Label styleClass="title">Calculations</Label>
+        </VBox>
     </VBox>
 </VBox>

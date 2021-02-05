@@ -1,41 +1,25 @@
 package com.gray;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+import java.net.URL;
+
 public class MainSceneController {
-    @FXML
-    private VBox eqSolvingWindow;
-    @FXML
-    private VBox welcomeWindow;
-    @FXML
-    private VBox calculationsWindow;
 
-    private VBox[] windows;
+    public VBox mainWindow;
 
-    @FXML private void initialize(){
-        this.windows = new VBox[]{eqSolvingWindow, welcomeWindow, calculationsWindow};
-        for (VBox window:windows){
-            window.managedProperty().bind(window.visibleProperty());
-        }
+    public void loadEquationSolving(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        URL xmlUrl = getClass().getResource("/eqSolving.fxml");
+        loader.setLocation(xmlUrl);
+        VBox eqSolvingWindow = loader.load();
+        mainWindow.getChildren().add(eqSolvingWindow);
     }
 
-    private void hideAllWindows(){
-        for (VBox window : windows){
-            window.setVisible(false);
-        }
+    public void loadCalculations(ActionEvent actionEvent) {
     }
-
-    @FXML
-    private void loadEquationSolving(){
-        hideAllWindows();
-        eqSolvingWindow.setVisible(true);
-    }
-
-    @FXML
-    private void loadCalculations(){
-        hideAllWindows();
-        calculationsWindow.setVisible(true);
-    }
-
 }

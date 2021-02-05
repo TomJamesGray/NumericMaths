@@ -3,10 +3,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
-
+<?import java.lang.*?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.FlowPane?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.gray.MainSceneController"
@@ -15,22 +19,17 @@
         <menus>
             <Menu text="Functions">
                 <items>
-                    <MenuItem text="Equation Solving"  onAction="#loadEquationSolving"></MenuItem>
-                    <MenuItem text="Calculations" onAction="#loadCalculations"></MenuItem>
+                    <MenuItem text="Equation Solving" onAction="#loadEquationSolving"/>
+                    <MenuItem text="Calculations" onAction="#loadCalculations"/>
                 </items>
             </Menu>
         </menus>
     </MenuBar>
     <VBox fx:id="mainWindow">
-        <VBox fx:id="welcomeWindow">
+        <VBox fx:id="welcomeWindow" visible="false">
             <Label styleClass="title" text="NumericMaths"/>
             <Label fx:id="subTitle" text="Lorem Ipsum Dolor Sit Amet"/>
         </VBox>
-        <VBox fx:id="eqSolvingWindow" styleClass="windowPane" visible="false">
-            <Label styleClass="title">Equation Solving</Label>
-        </VBox>
-        <VBox fx:id="calculationsWindow" styleClass="windowPane" visible="false">
-            <Label styleClass="title">Calculations</Label>
-        </VBox>
+<!--        <fx:include source="eqSolving.fxml"/>-->
     </VBox>
 </VBox>

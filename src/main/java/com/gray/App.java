@@ -1,19 +1,11 @@
 package com.gray;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-//import java.net.URL;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Queue;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;

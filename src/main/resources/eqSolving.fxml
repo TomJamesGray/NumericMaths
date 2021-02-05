@@ -1,0 +1,28 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gray.EqSolvingController"
+      stylesheets="style.css"
+      fx:id="eqSolvingWindow" styleClass="windowPane">
+    <Label styleClass="title">Equation Solving</Label>
+    <FlowPane vgap="10" hgap="10" styleClass="userInputGrid">
+        <Label text="Method"/>
+        <ComboBox  fx:id="methodToUse" onAction="#methodUpdate">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Bisection"/>
+                    <String fx:value="Secant"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <VBox fx:id="editableForAction">
+
+        </VBox>
+    </FlowPane>
+</VBox>

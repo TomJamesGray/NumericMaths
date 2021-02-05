@@ -5,6 +5,12 @@
     -fx-font-size: 20px;
     -fx-padding: 10px 0px 10px 0px;
 }
+.formLabel > Label{
+    -fx-padding: 10px;
+}
+.windowPane > *{
+    -fx-padding: 10px 0px 10px 0px;
+}
 /*.userInputGrid Label{*/
 /*    -fx-width:100px;*/
 /*}*/

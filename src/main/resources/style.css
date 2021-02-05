@@ -1,0 +1,6 @@
+#mainWindow{
+    -fx-padding:20px;
+}
+#mainTitle{
+    -fx-font-size: 20px;
+}

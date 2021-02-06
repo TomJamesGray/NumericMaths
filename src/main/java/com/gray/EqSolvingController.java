@@ -1,6 +1,7 @@
 package com.gray;
 
 import com.gray.eqSolvingActions.Bisection;
+import com.gray.eqSolvingActions.Secant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -16,6 +17,9 @@ public class EqSolvingController {
         String method = (String) methodToUse.getSelectionModel().getSelectedItem();
         if (method.equals("Bisection")){
             Bisection pane = new Bisection(editableForAction);
+        }
+        if (method.equals("Secant")){
+            Secant pane = new Secant(editableForAction);
         }
     }
 }

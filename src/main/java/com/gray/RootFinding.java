@@ -36,4 +36,20 @@ public class RootFinding {
         ShuntingYard sY = new ShuntingYard();
         return (sY.evalRpn(rpnLine, Collections.singletonMap("x", x)));
     }
+
+    public static double secantMethod(double x0, double x1, String[] rpnLine){
+        final int MAX_ITERS = 1000;
+        final double EPSILON = 0.00000001;
+        double fxn = 10;
+        double xn = 0;
+        int iters = 0;
+        while (iters < MAX_ITERS && Math.abs(fxn) > EPSILON) {
+            xn = x1 - evalRpnWithX(rpnLine,x1) * (x1 - x0) / (evalRpnWithX(rpnLine,x1) - evalRpnWithX(rpnLine,x0));
+            fxn = evalRpnWithX(rpnLine,xn);
+            x0 = x1;
+            x1 = xn;
+            iters += 1;
+        }
+        return (xn);
+    }
 }

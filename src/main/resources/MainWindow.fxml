@@ -26,7 +26,7 @@
         </menus>
     </MenuBar>
     <VBox fx:id="mainWindow">
-        <VBox fx:id="welcomeWindow" visible="false">
+        <VBox fx:id="welcomeWindow">
             <Label styleClass="title" text="NumericMaths"/>
             <Label fx:id="subTitle" text="Lorem Ipsum Dolor Sit Amet"/>
         </VBox>

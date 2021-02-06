@@ -11,8 +11,10 @@ import java.net.URL;
 public class MainSceneController {
 
     public VBox mainWindow;
+    public VBox welcomeWindow;
 
     public void loadEquationSolving(ActionEvent actionEvent) throws IOException {
+        mainWindow.getChildren().clear();
         FXMLLoader loader = new FXMLLoader();
         URL xmlUrl = getClass().getResource("/eqSolving.fxml");
         loader.setLocation(xmlUrl);

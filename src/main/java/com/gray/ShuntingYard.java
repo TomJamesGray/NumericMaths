@@ -22,8 +22,11 @@ public class ShuntingYard {
         ExprFunction subtraction = new ExprFunction("-",2,2,(Double [] x) -> x[0] - x[1]);
         ExprFunction multiplication = new ExprFunction("\\*",2,3,(Double [] x) -> x[0] * x[1]);
         ExprFunction division = new ExprFunction("\\/",2,3,(Double [] x) -> x[0] / x[1]);
+        ExprFunction power = new ExprFunction("\\^",2,4,(Double [] x) -> Math.pow(x[0], x[1]));
         ExprFunction sine = new ExprFunction("sin",1,6,(Double [] x) -> Math.sin(x[0]));
         ExprFunction cos = new ExprFunction("cos",1,6,(Double [] x) -> Math.cos(x[0]));
+        ExprFunction tan = new ExprFunction("tan",1,6,(Double [] x) -> Math.tan(x[0]));
+        ExprFunction exp = new ExprFunction("tan",1,6,(Double [] x) -> Math.exp(x[0]));
         ExprFunction lBracket = new ExprFunction("\\(",0,1,null);
         ExprFunction rBracket = new ExprFunction("\\)",0,1,null);
 
@@ -32,8 +35,11 @@ public class ShuntingYard {
         operators.put("-",subtraction);
         operators.put("*",multiplication);
         operators.put("/",division);
+        operators.put("^",power);
         operators.put("sin",sine);
         operators.put("cos",cos);
+        operators.put("tan",tan);
+        operators.put("exp",exp);
         operators.put("(",lBracket);
         operators.put(")",rBracket);
         this.operators = operators;

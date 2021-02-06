@@ -16,8 +16,8 @@ public class App extends Application{
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        primaryStage.setHeight(800);
-        primaryStage.setWidth(1200);
+        primaryStage.setHeight(600);
+        primaryStage.setWidth(400);
         FXMLLoader loader = new FXMLLoader();
         URL xmlUrl = getClass().getResource("/MainWindow.fxml");
         loader.setLocation(xmlUrl);

@@ -32,7 +32,7 @@ public class RootFinding {
         return (p);
     }
 
-    private static double evalRpnWithX(String[] rpnLine, Double x) {
+    public static double evalRpnWithX(String[] rpnLine, Double x) {
         ShuntingYard sY = new ShuntingYard();
         return (sY.evalRpn(rpnLine, Collections.singletonMap("x", x)));
     }

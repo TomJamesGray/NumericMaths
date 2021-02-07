@@ -6,6 +6,10 @@
 <?import java.lang.String?>
 
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.Cursor?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.gray.EqSolvingController"
@@ -24,8 +28,13 @@
                 </items>
             </ComboBox>
         </HBox>
-        <VBox fx:id="editableForAction">
+        <GridPane hgap="10" vgap="10">
+            <VBox fx:id="editableForAction" GridPane.columnIndex="0" GridPane.rowIndex="0">
 
-        </VBox>
+            </VBox>
+            <VBox fx:id="graphArea" GridPane.columnIndex="1" GridPane.rowIndex="0">
+
+            </VBox>
+        </GridPane>
     </VBox>
 </VBox>

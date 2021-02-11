@@ -12,9 +12,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.awt.desktop.SystemSleepEvent;
-import java.util.Arrays;
-import java.util.Queue;
 
 public class Bisection extends ActionWithGraph{
     private VBox outputBox;

@@ -21,12 +21,13 @@ public class EqSolvingController {
     public void methodUpdate(ActionEvent actionEvent) {
         String method = (String) methodToUse.getSelectionModel().getSelectedItem();
         editableForAction.getChildren().clear();
+        graphArea.getChildren().clear();
 
         if (method.equals("Bisection")){
             Bisection pane = new Bisection(editableForAction,graphArea);
         }
         if (method.equals("Secant")){
-            Secant pane = new Secant(editableForAction);
+            Secant pane = new Secant(editableForAction,graphArea);
         }
     }
 }

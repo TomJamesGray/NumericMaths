@@ -10,14 +10,15 @@ import javafx.scene.layout.VBox;
 
 import java.util.Queue;
 
-public class Secant {
+public class Secant extends ActionWithGraph{
     private VBox outputBox;
     private TextField p2;
     private TextField p1;
     private TextField functionField;
     private Label answerText;
 
-    public Secant(VBox box) {
+    public Secant(VBox box, VBox graphArea) {
+        super(graphArea);
         HBox line1 = new HBox();
         line1.getStyleClass().add("formLabel");
         line1.getChildren().add(new Label("Point 1"));
@@ -42,6 +43,11 @@ public class Secant {
             this.runSecant();
         });
         line4.getChildren().add(solveBtn);
+        Button graphBtn = new Button("Graph");
+        graphBtn.setOnAction(value ->{
+            this.handleGraphFunc();
+        });
+        line4.getChildren().add(graphBtn);
 
         HBox line5 = new HBox();
         Label answerText = new Label("");
@@ -50,6 +56,13 @@ public class Secant {
 
         box.getChildren().addAll(line1, line2, line3, line4, line5);
         this.outputBox = box;
+    }
+
+    private void handleGraphFunc() {
+        System.out.println(functionField);
+        graphFunc(Double.parseDouble(p1.getText()),
+                Double.parseDouble(p2.getText()),
+                this.functionField);
     }
 
     private boolean runSecant() {

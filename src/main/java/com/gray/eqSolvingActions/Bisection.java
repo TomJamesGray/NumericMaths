@@ -12,19 +12,21 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.awt.desktop.SystemSleepEvent;
 import java.util.Arrays;
 import java.util.Queue;
 
-public class Bisection {
+public class Bisection extends ActionWithGraph{
     private VBox outputBox;
     private TextField lowerBound;
     private TextField upperBound;
-    private TextField functionField;
+    public TextField functionField;
     private Label answerText;
     private VBox graphArea;
     private LineChart lineChart;
 
     public Bisection(VBox box, VBox graphArea){
+        super(graphArea);
         HBox line1 = new HBox();
         line1.getStyleClass().add("formLabel");
         line1.getChildren().add(new Label("Lower Bound"));
@@ -50,7 +52,7 @@ public class Bisection {
         });
         Button graphBtn = new Button("Graph");
         graphBtn.setOnAction(value ->{
-            this.graphFunc();
+            this.handleGraphFunc();
         });
         line4.getChildren().add(solveBtn);
         line4.getChildren().add(graphBtn);
@@ -62,22 +64,17 @@ public class Bisection {
 
         box.getChildren().addAll(line1,line2,line3,line4,line5);
         this.outputBox = box;
+    }
 
-        NumberAxis xAxis = new NumberAxis(-5,5,1);
-        xAxis.setLabel("x");
-
-        NumberAxis yAxis = new NumberAxis(-5,5,1);
-        yAxis.setLabel("y");
-        xAxis.setAutoRanging(true);
-        yAxis.setAutoRanging(true);
-        LineChart<Number,Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.setCreateSymbols(false);
-        this.lineChart = lineChart;
-        graphArea.getChildren().add(lineChart);
+    private void handleGraphFunc(){
+        System.out.println(functionField);
+        graphFunc(Double.parseDouble(lowerBound.getText()),
+                Double.parseDouble(upperBound.getText()),
+                this.functionField);
     }
 
     private boolean runBisect() {
-        String[] rpn = getRpnExpr();
+        String[] rpn = getRpnExpr(this.functionField);
         double approxRoot;
         try {
             approxRoot = RootFinding.bisect(
@@ -93,28 +90,5 @@ public class Bisection {
         System.out.println(approxRoot);
         this.answerText.setText(String.format("Approximate root is x = %.4f",approxRoot));
         return(true);
-    }
-
-    private String[] getRpnExpr(){
-        ShuntingYard parser = new ShuntingYard();
-        Queue<String> rpnQ = parser.toRpn(functionField.getText());
-        return (rpnQ.toArray(new String[0]));
-    }
-
-    private void graphFunc(){
-        XYChart.Series series = new XYChart.Series();
-        double lowerX = Double.parseDouble(lowerBound.getText());
-        double upperX = Double.parseDouble(upperBound.getText());
-        final int points = 100;
-        double stepSize = (upperX - lowerX) / points;
-
-        ShuntingYard sy = new ShuntingYard();
-
-        String[] rpn = getRpnExpr();
-        for (double i = lowerX; i < upperX; i += stepSize){
-             series.getData().add(new XYChart.Data(i, RootFinding.evalRpnWithX(rpn,i)));
-        }
-        lineChart.getData().add(series);
-
     }
 }

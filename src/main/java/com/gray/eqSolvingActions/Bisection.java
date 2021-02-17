@@ -56,6 +56,8 @@ public class Bisection extends ActionWithGraph{
 
         HBox line5 = new HBox();
         Label answerText = new Label("");
+        answerText.setPrefWidth(200);
+        answerText.setWrapText(true);
         this.answerText = answerText;
         line5.getChildren().add(answerText);
 

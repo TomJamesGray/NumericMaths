@@ -19,7 +19,7 @@ public class App extends Application{
         primaryStage.setHeight(600);
         primaryStage.setWidth(900);
         FXMLLoader loader = new FXMLLoader();
-        URL xmlUrl = getClass().getResource("/MainWindow.fxml");
+        URL xmlUrl = getClass().getResource("/eqSolving.fxml");
         loader.setLocation(xmlUrl);
         Parent root = loader.load();
 
@@ -29,11 +29,5 @@ public class App extends Application{
 
     public static void main(String[] args) {
         launch(args);
-    }
-    public static String getInput(String prompt){
-        Scanner input = new Scanner(System.in);
-        System.out.print(prompt);
-        String val = input.nextLine();
-        return(val);
     }
 }
